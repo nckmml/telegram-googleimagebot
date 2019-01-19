@@ -4,6 +4,8 @@ from urllib.parse import urljoin
 import random
 
 logger = logging.getLogger()
+ApiKey = '' # insert your Google-API key here
+CustomSearch = '' #insert your cx ID here
 
 # Surpress warnings 'Unverified HTTPS request is being made"
 requests.packages.urllib3.disable_warnings()
@@ -63,15 +65,15 @@ class TelegramAPI(API):
 class GoogleImagesAPI(API):
 
     def __init__(self):
-        self.url = 'https://ajax.googleapis.com/ajax/services/search/'
+        self.url = 'https://www.googleapis.com/customsearch/'
 
     def request(self, method, endpoint, **kwargs):
         content = super(GoogleImagesAPI, self).request(method, endpoint, **kwargs)
-        return content['responseData']['results']
+        return content['items']
 
     def images(self, query, results=8):
         assert 1 <= results <= 8
-        return self.get('images', v='1.0', rsz=results, q=query)
+        return self.get('v1', key=ApiKey, cx=CustomSearch, num=results, q=query, alt='json', searchType='image')
 
     def random_image(self, query, results=8):
         results = self.images(query, results)
