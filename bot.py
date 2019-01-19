@@ -25,7 +25,7 @@ class TelegramBot:
 
         # Define valid commands
         self.commands = {
-            'image': self.image
+            'img': self.image
         }
 
     def image(self, text):
@@ -35,7 +35,7 @@ class TelegramBot:
         if image is None:
             found = "nothing"
         else:
-            found = image['url']
+            found = image['link']
         returntext = ('Searched for {}, found {}'.format(text, found))
         return returntext
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
     bot = TelegramBot(token=args.token)
     offset = args.offset if args.offset else 0
-    wait = args.wait if args.wait else 15
+    wait = args.wait if args.wait else 5
     while True:
         logger.info('Waiting {} seconds'.format(wait))
         time.sleep(wait)
