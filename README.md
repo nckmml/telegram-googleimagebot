@@ -9,12 +9,8 @@ Contact BotFather on Telegram (https://telegram.me/botfather) via private messag
 
 This token is used to authenticate requests to the bot API.
 
-### Run docker container
-Automated build on Docker Hub is available.
-
-```
-docker run -i --name googleimagebot stanislavb/telegram-googleimagebot 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw
-```
+### Insert your API key and Custom Search ID
+edit the api.py and copy your API key and Custom Search ID into the variables on top and build the container or start it without docker
 
 ### Build docker image by yourself
 Handy instructions are in the Makefile.
@@ -22,4 +18,20 @@ Handy instructions are in the Makefile.
 ```
 make build
 TOKEN=110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw make run
+```
+
+### Without docker
+
+start the bot.py with your Token:
+
+```
+$ bot.py 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw
+```
+
+### Usage
+
+Add the bot to a telegram group or write a message to him with
+
+```
+/img query
 ```
