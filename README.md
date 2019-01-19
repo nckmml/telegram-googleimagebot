@@ -35,3 +35,5 @@ Add the bot to a telegram group or write a message to him with
 ```
 /img query
 ```
+
+The Google Custom Search API is limited to 100 search queries per day.
