@@ -47,8 +47,12 @@ class TelegramAPI(API):
         content = super(TelegramAPI, self).request(method, endpoint, **kwargs)
         if not content['ok']:
             logger.error('API returned error: {}'.format(content['description']))
-        return content['result']
-
+        try:
+            return content['items']
+        except KeyError as e:
+            logger.error('Invalid or no search result')
+            return None
+        
     def get_me(self):
         return self.get('getMe')
 
